@@ -21,16 +21,16 @@ class Database:
     # create user
     @staticmethod
     def create(firstName, lastName, username, password):
-        print(1)
+
         # add user data into users table
         Cursor.execute(f"INSERT INTO users (first_name, last_name, username, password) VALUES (?, ?, ?, ?)", (firstName, lastName, username, password))
-        print(2)
+
         # save added data in users table
         Connect.commit()
-        print(3)
+
         # get saved data from database
         userData = Cursor.execute(f"SELECT * FROM users WHERE username='{username}'").fetchone()
-        print(4)
+
         # return saved data from database
         return {
             'fname': userData[userData.index(firstName)],
